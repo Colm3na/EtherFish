@@ -8,8 +8,10 @@ Alimentador de peces mediante pagos en la blockchain de Ethereum
   -Raspberry Pi
   
   -Pi camera
+  
+  - DC motor
 
-### oftware:
+### Software:
 
   -Nodejs
 
