@@ -1,5 +1,5 @@
 ### Node modules
-'''$ npm i web3 ehtereumjs-tx onoff'''
+```$ npm i web3 ehtereumjs-tx onoff```
 
 ### Tested on:
   - Raspberry Pi 2
