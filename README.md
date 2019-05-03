@@ -3,17 +3,17 @@ Alimentador de peces mediante pagos en la blockchain de Ethereum
 
 *** WORK IN PROGRESS ***
 
-Hardware:
+### Hardware:
 
   -Raspberry Pi
   
   -Pi camera
 
-Software:
+### oftware:
 
   -Nodejs
 
 
-Blockchain:
+### Blockchain:
 
   -Ethereum
