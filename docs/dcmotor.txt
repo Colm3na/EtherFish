@@ -1,0 +1,12 @@
+Chip L293D Puente H para control de motores DC
+
+ENABLE          A               B               RESULT
+
+L               H               L       Not spinning - Enable is off
+L               L               H       Not spinning - Enable is off
+H               L               L       Not spinning - Both inputs are off
+H               H               L       Turning clockwise*
+H               L               H       Turning counter-clockwise*
+H               H               H       Not spinning - Both inputs are on
+
+* Direction is down to the motor
