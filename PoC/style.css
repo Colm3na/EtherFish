@@ -1,0 +1,48 @@
+body {
+	margin:0;
+	font-family:arial;
+}
+
+header {
+	background-color:#000;
+	color:#fff;
+	text-align:center;
+}
+
+#divBlock {
+	display:inline-block;
+	margin: 1%;
+	padding: 0 1% 0 1%;
+	border:1px dotted #000;
+	background-color:#07c;
+	color:#fff;
+}
+
+#divBalance {
+	display:inline-block;
+	margin:1%;
+	padding:1%;
+	border:1px dotted #000;
+	border-radius:1px;
+}
+
+#pecera {
+	position:relative;
+	margin:0 auto;
+	width:100%;
+	text-align:center;
+}
+
+#feedButton {
+	background-color:#09f;
+	color:#fff;
+	padding:5px;
+}
+footer {
+	position:fixed;
+	width:100%;
+	bottom:0;
+	text-align:center;
+	background-color:#000;
+	color:#fff;
+}
