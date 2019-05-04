@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>EtherFish | Colm3na</title>
+<meta name="description" content="Alimentador de peces remoto y usando Ethereum como plataforma de pagos.">
+<link rel="shortcut icon" href="favicon.png">
+<script src="web3.min.js"></script>
+<script src="callbacks.js"></script>
+<script>
+web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/INFURA-KEY"));
+</script>
+</head>
+<body>
+<header>
+<h1>EtherFish (Proof of Concept)</h1>
+</header>
+<div id="divBlock">
+<p>Latest Block (Rinkeby): <span id="block"></span></p>
+</div>
+<br/>
+<div id="divBalance">
+<p>Fish Address (Rinkeby): 0x6a5a00c2b4d8a07d9B6F680baC51644f3551fEc5</p>
+<p>Balance: <span id="balance"></span> wei</p>
+</div>
+<div id="pecera">
+<img src="pecera.gif" alt="Pecera" />
+<br/>
+<input id="feedButton" type="button" onClick="message()" value="Feed it!" />
+<br>
+<p id="message"></p>
+</div>
+
+<footer>
+<p>EtherFish</p>
+</footer>
+<script type="text/javascript">
+web3.eth.getBlock("latest", CB_getBlock);
+web3.eth.getBalance("0x6a5a00c2b4d8a07d9B6F680baC51644f3551fEc5", CB_getBalance);
+function message() {
+ document.getElementById("message").innerHTML = "[Dummy message] Thanks for keeping the fish alive!";
+}
+</script>
+<noscript>Javascript must be enabled</noscript>
+</body>
+</html>
