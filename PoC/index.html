@@ -7,40 +7,55 @@
 <title>EtherFish | Colm3na</title>
 <meta name="description" content="Alimentador de peces remoto y usando Ethereum como plataforma de pagos.">
 <link rel="shortcut icon" href="favicon.png">
-<script src="web3.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="../lib/web3.js@1.0.0-beta.37/web3.min.js"></script>
 <script src="callbacks.js"></script>
-<script>
-web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/INFURA-KEY"));
-</script>
+<script src="key.js"></script>
 </head>
 <body>
 <header>
-<h1>EtherFish (Proof of Concept)</h1>
+<h1>EtherFish (Proof of Concept) v0.1</h1>
 </header>
 <div id="divBlock">
 <p>Latest Block (Rinkeby): <span id="block"></span></p>
 </div>
 <br/>
 <div id="divBalance">
-<p>Fish Address (Rinkeby): 0x6a5a00c2b4d8a07d9B6F680baC51644f3551fEc5</p>
+<p>Fish Address (Rinkeby): <span id="addr"></span></p>
 <p>Balance: <span id="balance"></span> wei</p>
 </div>
 <div id="pecera">
 <img src="pecera.gif" alt="Pecera" />
 <br/>
-<input id="feedButton" type="button" onClick="message()" value="Feed it!" />
+<input type="text" id="signedTx" maxlength=1000 placeholder="Put your signed Tx here..." />
 <br>
+<input id="feedButton" type="button" onClick="message(),feed()" value="Feed it!" />
+<br>
+<p id="tx"></p>
 <p id="message"></p>
+<p id="message2"></p>
 </div>
 
 <footer>
 <p>EtherFish</p>
 </footer>
 <script type="text/javascript">
+const address = "0x6a5a00c2b4d8a07d9B6F680baC51644f3551fEc5";
+document.getElementById("addr").innerHTML = address;
 web3.eth.getBlock("latest", CB_getBlock);
-web3.eth.getBalance("0x6a5a00c2b4d8a07d9B6F680baC51644f3551fEc5", CB_getBalance);
+web3.eth.getBalance(address, CB_getBalance);
 function message() {
- document.getElementById("message").innerHTML = "[Dummy message] Thanks for keeping the fish alive!";
+ document.getElementById("message").innerHTML = "Thanks for keeping the fish alive!";
+}
+function feed() {
+ var signedTx = document.getElementById("signedTx").value;
+ web3.eth.sendSignedTransaction(signedTx);
+ var counter = 20;
+ setInterval(function(){
+  counter--;
+  document.getElementById("message2").innerHTML = "Tx will be effective in " + counter + " seconds.";
+ }, 1000);
+ setTimeout(function(){ location.reload(true); }, 20000);
 }
 </script>
 <noscript>Javascript must be enabled</noscript>
