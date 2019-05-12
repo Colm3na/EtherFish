@@ -38,6 +38,11 @@ header {
 	color:#fff;
 	padding:5px;
 }
+
+#signedTx {
+	width:455px;
+}
+
 footer {
 	position:fixed;
 	width:100%;
