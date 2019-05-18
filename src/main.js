@@ -10,20 +10,27 @@ const Tx = require('ethereumjs-tx');
 // Module onoff
 const Gpio = require('onoff').Gpio;
 
-// Use LED as Tx confirmation
-var LED = new Gpio(17,'out');
+const Motor1A = new Gpio(23, 'out'); // pin 16
+const Motor1B = new Gpio(24, 'out'); // pin 18
+const Motor1E = new Gpio(25, 'out'); // pin 22
 
-function blinkLED() {
- if(LED.readSync() == 0) {
-  LED.writeSync(1);
- } else {
-  LED.writeSync(0);
- }
+
+// Rotation Clockwise
+function motorFW() {
+	Motor1A.writeSync(1);
+	Motor1B.writeSync(0);
+	Motor1E.writeSync(1);
 }
 
-function endBlink() {
- LED.writeSync(0);
- LED.unexport();
+// Rotation Counter-Clockwise
+function motorBW() {
+	Motor1A.writeSync(0);
+	Motor1B.writeSync(1);
+	Motor1E.writeSync(1);
+}
+
+function motorOFF() {
+	Motor1E.writeSync(0);
 }
 
 const privateKey = new Buffer('PRIVATE KEY', 'hex')
@@ -40,15 +47,16 @@ const rawTx = {
   chainId: 4
 };
 
-// Send Tx
+// Sign Tx
 const tx = new Tx(rawTx);
 tx.sign(privateKey);
 const serializedTx = tx.serialize();
 console.log('0x'+serializedTx.toString('hex'));
 
-// Sign Tx
+// Send Tx
 web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex')).on('transactionHash', (res) => {
 	console.log(res);
-	blinkLED();
-	setTimeout(endBlink, 5000);
+	motorFW();
+	setTimeout(motorBW, 2000);
+	setTimeout(motorOFF, 4000);
 });
