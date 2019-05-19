@@ -1,8 +1,6 @@
 # EtherFish
 Alimentador de peces mediante pagos en la blockchain de Ethereum
 
-*** Work in Progress ***
-
 ### Hardware:
 
   - Raspberry Pi
@@ -26,15 +24,19 @@ Alimentador de peces mediante pagos en la blockchain de Ethereum
 
 ## Build and Run
 
-```$ git clone https://github.com/Colm3na/EtherFish.git```
+```
+$ git clone https://github.com/Colm3na/EtherFish.git
+$ cd EtherFish
+$ mkdir secret
+$ echo "https://rinkeby.infura.io/v3/YOUR-API-KEY" > secret/infuraURL.txt```
+$ echo "Your-Private-Key-without-0x" > secret/privateKey.txt```
+$ node src/main.js
+```
 
-```$ cd EtherFish```
+## TODO
 
-```$ mkdir secret```
-
-```$ echo "https://rinkeby.infura.io/v3/YOUR-API-KEY" > secret/infuraURL.txt```
-
-```$ echo "Your-Private-Key-without-0x" > secret/privateKey.txt```
-
-```$ node src/main.js```
-
+- Use IPC as Provider
+```
+const net = require('net');
+const web3 = new Web3(new Web3.providers.IpcProvider('/users/myuser/.ethereum/geth.ipc', net, {}));
+```
