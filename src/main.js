@@ -7,7 +7,7 @@ const Tx = require('ethereumjs-tx');
 // Module GPIO (Raspberry Pi 2)
 const Motor = require('./motor.js');
 
-var privateKey0 = fs.readFileSync('privateKey.txt', 'utf8');
+var privateKey0 = fs.readFileSync('../secret/privateKey.txt', 'utf8');
 const privateKey = new Buffer(privateKey0, 'hex');
 const pk = '0x' + privateKey0;
 var _value = web3.utils.toHex(web3.utils.toWei('0.0001', 'ether'));
