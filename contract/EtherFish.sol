@@ -4,8 +4,11 @@ contract EtherFish {
     
     address public admin;
     
+    uint lastFeed;
+    
     constructor () public {
         admin = msg.sender;
+        lastFeed = now;
     }
     
     modifier auth {
@@ -16,7 +19,8 @@ contract EtherFish {
     event Feeded(address _from, uint _timestamp);
     
     function feedFish() public payable {
-        require(msg.value >= 0.0001 ether);
+        require(msg.value >= 0.0001 ether, "Cost: 0.0001 ether");
+        require(lastFeed < now + 60, "Wait 1 minute");
         emit Feeded(msg.sender, now);
     }
     
