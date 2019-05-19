@@ -30,8 +30,8 @@ Alimentador de peces mediante pagos en la blockchain de Ethereum
 $ git clone https://github.com/Colm3na/EtherFish.git
 $ cd EtherFish
 $ mkdir secret
-$ echo "https://rinkeby.infura.io/v3/YOUR-API-KEY" > secret/infuraURL.txt```
-$ echo "Your-Private-Key-without-0x" > secret/privateKey.txt```
+$ echo "https://rinkeby.infura.io/v3/YOUR-API-KEY" > secret/infuraURL.txt
+$ echo "Your-Private-Key-without-0x" > secret/privateKey.txt
 $ node src/main.js
 ```
 
