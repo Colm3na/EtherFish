@@ -40,3 +40,4 @@ $ node src/main.js
 const net = require('net');
 const web3 = new Web3(new Web3.providers.IpcProvider('/users/myuser/.ethereum/geth.ipc', net, {}));
 ```
+- Use web3.eth.subscribe
