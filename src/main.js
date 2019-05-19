@@ -1,62 +1,52 @@
-// web3: API Ehereum
 const Web3 = require('web3');
-
-// Provider: Infura (Require API-KEY)
-const web3 = new Web3(new Web3.providers.HttpProvider("https://rinkeby.infura.io/v3/API-KEY"));
-
-// Module ethereum-tx
+const fs = require('fs');
+var infuraURL = fs.readFileSync('../secret/infuraURL.txt', 'utf8');
+const web3 = new Web3(new Web3.providers.HttpProvider(infuraURL));
 const Tx = require('ethereumjs-tx');
 
-// Module onoff
-const Gpio = require('onoff').Gpio;
+// Module GPIO (Raspberry Pi 2)
+const Motor = require('./motor.js');
 
-const Motor1A = new Gpio(23, 'out'); // pin 16
-const Motor1B = new Gpio(24, 'out'); // pin 18
-const Motor1E = new Gpio(25, 'out'); // pin 22
+var privateKey0 = fs.readFileSync('privateKey.txt', 'utf8');
+const privateKey = new Buffer(privateKey0, 'hex');
+const pk = '0x' + privateKey0;
+var _value = web3.utils.toHex(web3.utils.toWei('0.0001', 'ether'));
+var _nonce;
 
-
-// Rotation Clockwise
-function motorFW() {
-	Motor1A.writeSync(1);
-	Motor1B.writeSync(0);
-	Motor1E.writeSync(1);
-}
-
-// Rotation Counter-Clockwise
-function motorBW() {
-	Motor1A.writeSync(0);
-	Motor1B.writeSync(1);
-	Motor1E.writeSync(1);
-}
-
-function motorOFF() {
-	Motor1E.writeSync(0);
-}
-
-const privateKey = new Buffer('PRIVATE KEY', 'hex')
-
-var _value = web3.utils.toHex(web3.utils.toWei('0.001', 'ether'));
-
-const rawTx = {
-  nonce: '0x15',
-  gasPrice: '0x098bca5a00',
-  gasLimit: '0x5208',
-  to: '0xdf588d9726305d68663e6f025b2c12db7042208e',
-  value: _value,
-  data: '0x',
-  chainId: 4
+var address_obj= web3.eth.accounts.privateKeyToAccount(pk);
+const _from = address_obj["address"];
+const _to = "0xdf588d9726305d68663e6f025b2c12db7042208e";
+var rawTx = {
+	"nonce": _nonce,
+	"gasPrice": 41000000000,
+	"gas": 21000,
+	"to": _to,
+	"value": _value,
+	"data": "0x",
+	"chainId": 4
 };
+var signedTx;
 
-// Sign Tx
-const tx = new Tx(rawTx);
-tx.sign(privateKey);
-const serializedTx = tx.serialize();
-console.log('0x'+serializedTx.toString('hex'));
+function CB_getTxCount(err,res) {
+	if(!err) {_nonce = res;}
+}
 
-// Send Tx
-web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex')).on('transactionHash', (res) => {
-	console.log(res);
-	motorFW();
-	setTimeout(motorBW, 2000);
-	setTimeout(motorOFF, 4000);
-});
+function CB_signTx(err,res) {
+	if(!err) {
+		signedTx = res["rawTransaction"];
+		console.log(signedTx);
+		const tx = new Tx(rawTx);
+		tx.sign(privateKey);
+		const serializedTx = tx.serialize();
+		web3.eth.sendSignedTransaction('0x' + serializedTx.toString('hex')).on('transactionHash', (res) => {
+			console.log(res);
+			Motor.rotationFW();
+			setTimeout(Motor.rotationBW, 2000);
+			setTimeout(Motor.endRotation, 4000);
+		});
+	}
+}
+
+web3.eth.getTransactionCount(_from,"latest",CB_getTxCount)
+	.then(web3.eth.accounts.signTransaction(rawTx,pk,CB_signTx));
+
