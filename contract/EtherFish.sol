@@ -4,7 +4,7 @@ contract EtherFish {
     
     address public admin;
     
-    uint lastFeed;
+    uint public lastFeed;
     
     constructor () public {
         admin = msg.sender;
@@ -20,7 +20,8 @@ contract EtherFish {
     
     function feedFish() public payable {
         require(msg.value >= 0.0001 ether, "Cost: 0.0001 ether");
-        require(lastFeed < now + 60, "Wait 1 minute");
+        require(lastFeed < now, "Wait 1 minute");
+        lastFeed = now+60;
         emit Feeded(msg.sender, now);
     }
     
