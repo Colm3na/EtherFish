@@ -13,7 +13,15 @@ H               H               H       Not spinning - Both inputs are on
 
 * Direction is down to the motor
 
-
-GPIO 25–Pin 22 > L293D–Pin 1
-GPIO 24–Pin 18 > L293D–Pin 2
-GPIO 23–Pin 16 > L293D–Pin 7
+L293D
+Pin 1 <-> GPIO 25 (Pin 22)
+Pin 2 <-> GPIO 24 (Pin 18)
+Pin 7 <-> GPIO 23 (Pin 16)
+Pin 3 <-> Motor +
+Pin 6 <-> Motor -
+Pin 4 <-> GND
+Pin 5 <-> GND
+Pin 12 <-> GND
+Pin 13 <-> GND
+Pin 8 <-> Battery + (3-6V)
+Pin 16 <-> RPi2 +5V
