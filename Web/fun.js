@@ -14,17 +14,12 @@ function getBalance() {
         web3.eth.getBalance(address, CB_getBalance);
 }
 
-function message() {
- document.getElementById("message").innerHTML = "Thanks for keeping the fish alive!";
-}
-
 function feed() {
         fishContract.methods.feedFish().send({from: _from, value: 100000000000000}, (error, result) => {
                 if(!error) {
-                        document.getElementById("message").innerHTML = "Thanks for feeding the fish";
+                        document.getElementById("message").innerHTML = "Thanks for keeping the fish alive!";
                 } else {
                         document.getElementById("message").innerHTML = "Something went wrong...";
                 }
         });
 }
-
