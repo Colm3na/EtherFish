@@ -24,14 +24,13 @@ Alimentador de peces mediante pagos en la blockchain de Ethereum
 
 [EN] User watches a fish tank online and can feed the fish remotely and pay with Ether.
 
-## Build and Run
+## Server
 
 ```
 $ git clone https://github.com/Colm3na/EtherFish.git
 $ cd EtherFish
 $ mkdir secret
-$ echo "https://rinkeby.infura.io/v3/YOUR-API-KEY" > secret/infuraURL.txt
-$ echo "Your-Private-Key-without-0x" > secret/privateKey.txt
+$ echo "wss://rinkeby.infura.io/ws/v3/YOUR-API-KEY" > secret/infuraURL.txt
 $ node src/main.js
 ```
 
@@ -42,4 +41,3 @@ $ node src/main.js
 const net = require('net');
 const web3 = new Web3(new Web3.providers.IpcProvider('/users/myuser/.ethereum/geth.ipc', net, {}));
 ```
-- Use web3.eth.subscribe
