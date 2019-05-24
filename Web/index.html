@@ -29,14 +29,10 @@ const web3 = new Web3(Web3.givenProvider);
 </div>
 <div id="pecera">
 <img src="pecera.gif" alt="Pecera" />
-<br/>
-<input type="text" id="signedTx" maxlength=1000 placeholder="Put your signed Tx here..." />
 <br>
 <input id="feedButton" type="button" onClick="message(),feed()" value="Feed it!" />
 <br>
-<p id="tx"></p>
 <p id="message"></p>
-<p id="message2"></p>
 </div>
 <script>
 document.getElementById("addr").innerHTML = address;
