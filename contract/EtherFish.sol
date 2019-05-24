@@ -16,13 +16,13 @@ contract EtherFish {
         _;
     }
     
-    event Feeded(address _from, uint _timestamp);
+    event Fed(address feeder);
     
     function feedFish() public payable {
         require(msg.value >= 0.0001 ether, "Cost: 0.0001 ether");
         require(lastFeed < now, "Wait 1 minute");
         lastFeed = now+60;
-        emit Feeded(msg.sender, now);
+        emit Fed(msg.sender);
     }
     
     function getBalance() public view returns (uint) {
