@@ -2,8 +2,8 @@ const Web3 = require('web3');
 const fs = require('fs');
 const Motor = require('./motor.js'); // Module GPIO (Raspberry Pi 2)
 
-var infuraURL = fs.readFileSync('../secret/infuraURL.txt', 'utf8');
-const web3 = new Web3(new Web3.providers.WebsocketProvider(infuraURL));
+var infuraWS = fs.readFileSync('../secret/infuraWS.txt', 'utf8');
+const web3 = new Web3(new Web3.providers.WebsocketProvider(infuraWS));
 
 var options = {
 	fromBlock: 4439954,
