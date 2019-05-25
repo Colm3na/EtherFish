@@ -1,6 +1,6 @@
 const Web3 = require('web3');
 const fs = require('fs');
-const Motor = require('./motor.js'); // Module GPIO (Raspberry Pi 2)
+//const Motor = require('./motor.js'); // Module GPIO (Raspberry Pi 2)
 
 var infuraWS = fs.readFileSync('../secret/infuraWS.txt', 'utf8');
 const web3 = new Web3(new Web3.providers.WebsocketProvider(infuraWS));
@@ -13,9 +13,10 @@ var options = {
 
 var subscription = web3.eth.subscribe('logs',options);
 subscription.on('data', (log) => {
+	console.log("***** NEW TX *****");
 	console.log(log);
-	Motor.rotationFW();
-	setTimeout(Motor.rotationBW, 2000);
-	setTimeout(Motor.endRotation, 4000);
+//	Motor.rotationFW();
+//	setTimeout(Motor.rotationBW, 2000);
+//	setTimeout(Motor.endRotation, 4000);
 });
 

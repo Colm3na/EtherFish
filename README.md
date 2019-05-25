@@ -24,15 +24,20 @@ Alimentador de peces mediante pagos en la blockchain de Ethereum
 
 [EN] User watches a fish tank online and can feed the fish remotely and pay with Ether.
 
-## Server
+## Fish Computer
 
 ```
 $ git clone https://github.com/Colm3na/EtherFish.git
 $ cd EtherFish
+$ npm i web3
 $ mkdir secret
 $ echo "wss://rinkeby.infura.io/ws/v3/YOUR-API-KEY" > secret/infuraWS.txt
-$ node src/main.js
+$ cd src
+$ node main.js
 ```
+
+## Client Side
+Interact with the contract through any browser with Metamask enabled.
 
 ## TODO
 
