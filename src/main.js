@@ -13,8 +13,11 @@ var options = {
 
 var subscription = web3.eth.subscribe('logs',options);
 subscription.on('data', (log) => {
-	console.log("***** NEW TX *****");
-	console.log(log);
+	console.log("* NEW TX *");
+	console.log("Block: " + log.blockNumber);
+	console.log("Tx Hash: " + log.transactionHash);
+	console.log("Feeder: " + log.data);
+	console.log("");
 //	Motor.rotationFW();
 //	setTimeout(Motor.rotationBW, 2000);
 //	setTimeout(Motor.endRotation, 4000);
