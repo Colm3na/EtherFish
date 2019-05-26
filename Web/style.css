@@ -8,39 +8,61 @@ header {
 	color:#fff;
 	text-align:center;
 }
+header h1 {
+	padding:5px;
+	margin:0;
+}
 
-#divBlock {
+#metamask {
+	width:100%;
+	color:#fff;
+}
+#metamask p {
+	margin:0px;
+	padding:5px;
+}
+
+.box {
 	display:inline-block;
-	margin: 1%;
-	padding: 0 1% 0 1%;
+	margin:10px;
+	padding:10px;
+	width:100%;
 	border:1px dotted #000;
+	border-radius:5px;
 	background-color:#07c;
+	color:#fff;
+	opacity:0.9;
+}
+.box a {
+	font-family:monospace;
 	color:#fff;
 }
 
-#divBalance {
-	display:inline-block;
-	margin:1%;
-	padding:1%;
-	border:1px dotted #000;
-	border-radius:1px;
+#info {
+	position:relative;
+	display:block;
+	width:30%;
+	float:left;
+	text-align:center;
 }
 
 #pecera {
 	position:relative;
-	margin:0 auto;
-	width:100%;
+	margin:50px auto;
+	width:70%;
+	display:block;
+	float:left;
 	text-align:center;
+}
+
+#acc, #txHash {
+	font-family:monospace;
 }
 
 #feedButton {
 	background-color:#09f;
 	color:#fff;
 	padding:5px;
-}
-
-#signedTx {
-	width:455px;
 }
 
 footer {
