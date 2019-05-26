@@ -14,8 +14,12 @@
         if (typeof web3 !== 'undefined') {
           console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
           window.web3 = new Web3(web3.currentProvider);
+		  $("#metamask").html("<p>Metamask detected.</p>");
+		  $("#metamask").css("background-color","#0b0");
         } else {
           console.log('No Web3 Detected... get Metamask');
+		  $("#metamask").html("<p>Metamask not detected!</p>");
+		  $("#metamask").css("background-color","#b00");
         }
       }) 
 </script>
@@ -25,29 +29,36 @@
 <header>
 <h1>EtherFish (Proof of Concept) v0.1</h1>
 </header>
-<div id="divBlock">
+<div id="metamask"></div>
+<div id="info">
+<div class="box">
 <p>Latest Block (Rinkeby): <span id="block">loading...</span></p>
 </div>
 <br/>
-<div id="divBalance">
+<div class="box">
 <p>Fish Address (Rinkeby): <a href="https://rinkeby.etherscan.io/address/0x0451a1c0e4194967363ad9cf1a202419ba4fe83e"><span id="addr"></span></a></p>
 <p>Balance: <span id="balance"></span> wei</p>
+</div>
+<br/>
+<div class="box">
 <p>Your account: <span id="acc"></span></p>
 <input type="button" onClick="getAcc()" value="Get your account" />
+</div>
 </div>
 <div id="pecera">
 <img src="pecera.gif" alt="Pecera" />
 <br>
-<input id="feedButton" type="button" onClick="feed()" value="Feed it!" />
+<input id="feedButton" type="button" onclick="feed()" value="Feed it!" />
 <br>
 <p id="message"></p>
+<p>Tx Hash: <span id="txHash"></span></p>
 </div>
 <script>
 document.getElementById("addr").innerHTML = addr;
 setInterval(funBlock, 5000);
 </script>
 <footer>
-<p>EtherFish</p>
+<p>2019 &copy; EtherFish</p>
 </footer>
 <noscript>Javascript must be enabled</noscript>
 </body>
