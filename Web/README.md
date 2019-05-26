@@ -1,5 +1,3 @@
-# Proof of Concept
-
 ## Website (test)
 
 METAMASK Required!
