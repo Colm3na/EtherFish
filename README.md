@@ -38,7 +38,7 @@ $ node main.js
 
 ## Client Side
 Interact with the contract through any browser with Metamask enabled.
-https://rinkeby.etherscan.io/address/0x0451a1c0e4194967363ad9cf1a202419ba4fe83e#writeContract
+[EtherFish](http://magmatest.000webhostapp.com/EtherFish/)
 
 ## TODO
 
