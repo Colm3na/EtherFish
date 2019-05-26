@@ -38,6 +38,7 @@ $ node main.js
 
 ## Client Side
 Interact with the contract through any browser with Metamask enabled.
+
 [EtherFish](http://magmatest.000webhostapp.com/EtherFish/)
 
 ## TODO
