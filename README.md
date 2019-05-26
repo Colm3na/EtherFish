@@ -6,10 +6,6 @@ Alimentador de peces mediante pagos en la blockchain de Ethereum
 ### Hardware:
 
   - Raspberry Pi
-  
-  - Pi camera (or any live streaming service)
-  
-  - DC motor
 
 ### Software:
 
@@ -37,9 +33,9 @@ $ node main.js
 ```
 
 ## Client Side
-Interact with the contract through any browser with Metamask enabled.
-
-[EtherFish](http://magmatest.000webhostapp.com/EtherFish/)
+Any browser with Metamask enabled and account unlocked.
+[Contract](https://rinkeby.etherscan.io/address/0x0451a1c0e4194967363ad9cf1a202419ba4fe83e)
+[Website](http://magmatest.000webhostapp.com/EtherFish/)
 
 ## TODO
 
