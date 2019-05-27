@@ -14,12 +14,12 @@
         if (typeof web3 !== 'undefined') {
           console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
           window.web3 = new Web3(web3.currentProvider);
-		  $("#metamask").html("<p>Metamask detected.</p>");
-		  $("#metamask").css("background-color","#0b0");
+		  $("#metamask").html("<p>Metamask detected &#x2714;</p>");
+		  $("#metamask").css("background-color","#0c0");
         } else {
           console.log('No Web3 Detected... get Metamask');
 		  $("#metamask").html("<p>Metamask not detected!</p>");
-		  $("#metamask").css("background-color","#b00");
+		  $("#metamask").css("background-color","#c00");
         }
       }) 
 </script>
@@ -27,25 +27,21 @@
 </head>
 <body onload="getBalance()">
 <header>
-<h1>EtherFish (Proof of Concept) v0.1</h1>
+<h1>&Xi;therFish <sub>Alpha</sub></h1>
 </header>
 <div id="metamask"></div>
+<div id="container">
 <div id="info">
-<div class="box">
-<p>Latest Block (Rinkeby): <span id="block">loading...</span></p>
-</div>
-<br/>
-<div class="box">
-<p>Fish Address (Rinkeby): <a href="https://rinkeby.etherscan.io/address/0x0451a1c0e4194967363ad9cf1a202419ba4fe83e"><span id="addr"></span></a></p>
-<p>Balance: <span id="balance"></span> wei</p>
-</div>
-<br/>
-<div class="box">
-<p>Your account: <span id="acc"></span></p>
-<input type="button" onClick="getAcc()" value="Get your account" />
-</div>
+<p>Network: <span id="network">Rinkeby</span></p>
+<p>Latest Block: <span id="block">loading...</span></p>
+<hr>
+<p>Fish Contract: <a href="https://rinkeby.etherscan.io/address/0x0451a1c0e4194967363ad9cf1a202419ba4fe83e"><span id="contractAddress"></span></a></p>
+<p>Balance: <span id="balance"></span></p>
+<hr>
+<p>User Account: <span id="userAccount"></span></p>
 </div>
 <div id="pecera">
+<!-- <iframe id="youtube" width="426" height="240" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe> -->
 <img src="pecera.gif" alt="Pecera" />
 <br>
 <input id="feedButton" type="button" onclick="feed()" value="Feed it!" />
@@ -53,8 +49,12 @@
 <p id="message"></p>
 <p>Tx Hash: <span id="txHash"></span></p>
 </div>
+</div>
 <script>
-document.getElementById("addr").innerHTML = addr;
+$(document).ready(function () {
+	$("#contractAddress").text(contractAddress);
+});
+getUserAccount();
 setInterval(funBlock, 5000);
 </script>
 <footer>
