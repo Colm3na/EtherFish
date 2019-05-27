@@ -28,7 +28,7 @@ function feed() {
 	web3.eth.sendTransaction({ 
 	from: _from,
 	gasPrice: "20000000000",
-	gas: "100000",
+	gas: "40000",
 	to: contractAddress, 
 	value: 100000000000000,
 	data: getData
@@ -37,6 +37,7 @@ function feed() {
 		 document.getElementById("message").innerHTML = "Thanks for keeping the fish alive!";
 		 var txHash = transactionHash;
 		 $("#txHash").html("<a href='https://rinkeby.etherscan.io/tx/"+txHash+"'>"+txHash+"</a>");
+		 setTimeout(getBalance, 20000);
 	} else {
 			 document.getElementById("message").innerHTML = "Something went wrong...";
 	}
