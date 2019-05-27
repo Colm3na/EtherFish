@@ -19,6 +19,9 @@ footer {
 	text-align:center;
 	background-color:#000;
 }
+footer p {
+	margin:5px;
+}
 header h1 {
 	padding:5px;
 	margin:0;
@@ -42,7 +45,7 @@ header sub {
 	position:relative;
 	display:block;
 	margin:30px auto;
-	width:94%;
+	width:98%;
 	background-color:#00e;
 }
 
@@ -51,7 +54,8 @@ header sub {
 	float:left;
 	padding:10px;
 	background-color:#eee;
-	width:35%;
+	width:34%;
+	min-width:335px;
 	border:1px solid #ddd;
 	border-radius: 5px;
 }
@@ -63,10 +67,12 @@ header sub {
 	position:relative;
 	float:right;
 	background-color:#eee;
-	width:60%;
+	width:64%;
+	min-width:460px;
 	text-align:center;
 	border:1px solid #ddd;
 	border-radius: 5px;
+	margin-bottom:100px;
 }
 
 #userAccount, #txHash, #contractAddress, #userAccount, #block, #balance, #network {
