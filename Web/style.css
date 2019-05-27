@@ -1,61 +1,75 @@
 body {
 	margin:0;
+	font-size:1em;
 	font-family:arial;
 }
 
-header {
-	background-color:#000;
+header, footer {
+	width:100%;
+	position:fixed;
 	color:#fff;
+}
+header {
+	position:relative;
 	text-align:center;
+	background: linear-gradient(#000, #333);
+}
+footer {
+	bottom:0;
+	text-align:center;
+	background-color:#000;
 }
 header h1 {
 	padding:5px;
 	margin:0;
 }
+header sub {
+	font-size:0.6em;
+}
 
 #metamask {
+	position:relative;
 	width:100%;
 	color:#fff;
+	font-family:monospace;
 }
 #metamask p {
 	margin:0px;
 	padding:5px;
 }
 
-.box {
-	display:inline-block;
-	margin:10px;
-	padding:10px;
-	width:100%;
-	border:1px dotted #000;
-	border-radius:5px;
-	background-color:#07c;
-	color:#fff;
-	opacity:0.9;
-}
-.box a {
-	font-family:monospace;
-	color:#fff;
+#container {
+	position:relative;
+	display:block;
+	margin:30px auto;
+	width:94%;
+	background-color:#00e;
 }
 
 #info {
 	position:relative;
-	display:block;
-	width:30%;
 	float:left;
-	text-align:center;
+	padding:10px;
+	background-color:#eee;
+	width:35%;
+	border:1px solid #ddd;
+	border-radius: 5px;
+}
+#info hr {
+	border:1px solid #ddd;
 }
 
 #pecera {
 	position:relative;
-	margin:50px auto;
-	width:70%;
-	display:block;
-	float:left;
+	float:right;
+	background-color:#eee;
+	width:60%;
 	text-align:center;
+	border:1px solid #ddd;
+	border-radius: 5px;
 }
 
-#acc, #txHash {
+#userAccount, #txHash, #contractAddress, #userAccount, #block, #balance, #network {
 	font-family:monospace;
 }
 
@@ -65,11 +79,10 @@ header h1 {
 	padding:5px;
 }
 
-footer {
-	position:fixed;
-	width:100%;
-	bottom:0;
-	text-align:center;
-	background-color:#000;
-	color:#fff;
+#youtube {
+	margin:10px;
+}
+
+a {
+	color:#00f;
 }
