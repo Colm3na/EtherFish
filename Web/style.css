@@ -1,94 +1,64 @@
-body {
-	margin:0;
-	font-size:1em;
-	font-family:arial;
-}
-
-header, footer {
-	width:100%;
-	position:fixed;
-	color:#fff;
-}
-header {
-	position:relative;
-	text-align:center;
-	background: linear-gradient(#000, #333);
-}
-footer {
-	bottom:0;
-	text-align:center;
-	background-color:#000;
-}
-footer p {
-	margin:5px;
-}
-header h1 {
-	padding:5px;
-	margin:0;
-}
-header sub {
-	font-size:0.6em;
-}
-
-#metamask {
-	position:relative;
-	width:100%;
-	color:#fff;
-	font-family:monospace;
-}
-#metamask p {
-	margin:0px;
-	padding:5px;
-}
-
-#container {
-	position:relative;
-	display:block;
-	margin:30px auto;
-	width:98%;
-	background-color:#00e;
-}
-
-#info {
-	position:relative;
-	float:left;
-	padding:10px;
-	background-color:#eee;
-	width:34%;
-	min-width:335px;
-	border:1px solid #ddd;
-	border-radius: 5px;
-}
-#info hr {
-	border:1px solid #ddd;
-}
-
-#pecera {
-	position:relative;
-	float:right;
-	background-color:#eee;
-	width:64%;
-	min-width:460px;
-	text-align:center;
-	border:1px solid #ddd;
-	border-radius: 5px;
-	margin-bottom:100px;
-}
-
-#userAccount, #txHash, #contractAddress, #userAccount, #block, #balance, #network {
-	font-family:monospace;
-}
-
-#feedButton {
-	background-color:#09f;
-	color:#fff;
-	padding:5px;
-}
-
-#youtube {
-	margin:10px;
-}
-
-a {
-	color:#00f;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>EtherFish | Colm3na</title>
+<meta name="description" content="Alimentador de peces remoto y usando Ethereum como plataforma de pagos.">
+<link rel="shortcut icon" href="favicon.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- Provider: Metamask -->
+<script>
+window.addEventListener('load', function() {
+	if (typeof web3 !== 'undefined') {
+		console.log('Web3 Detected! ' + web3.currentProvider.constructor.name);
+		window.web3 = new Web3(web3.currentProvider);
+		$("#metamask").html("<p>Metamask detected &#x2714;</p>");
+		$("#metamask").css("background-color","#0c0");
+	} else {
+		console.log('No Web3 Detected... get Metamask');
+		$("#metamask").html("<p>Metamask not detected!</p>");
+		$("#metamask").css("background-color","#c00");
+	}
+}) 
+</script>
+<script src="fun.js"></script>
+</head>
+<body onload="getBalance()">
+<header>
+<h1>&Xi;therFish <sub>Alpha</sub></h1>
+</header>
+<div id="metamask"></div>
+<div id="info">
+<p>Network: <span id="network">Rinkeby</span></p>
+<p>Latest Block: <span id="block">loading...</span></p>
+<hr>
+<p>Fish Contract: <a href="https://rinkeby.etherscan.io/address/0x0451a1c0e4194967363ad9cf1a202419ba4fe83e"><span id="contractAddress"></span></a></p>
+<p>Balance: <span id="balance"></span></p>
+<hr>
+<p>User Account: <span id="userAccount"></span></p>
+</div>
+<div id="pecera">
+<!-- <iframe id="youtube" width="426" height="240" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe> -->
+<img src="pecera.gif" style="width:360px" alt="Pecera" />
+<br>
+<input id="feedButton" type="button" onclick="feed()" value="Feed it!" />
+<br>
+<p id="message"></p>
+<p>Tx Hash: <span id="txHash"></span></p>
+</div>
+<footer>
+<p id="time">loading time...</p>
+</footer>
+<script>
+$(document).ready(function () {
+	$("#contractAddress").text(contractAddress);
+	setInterval(getTime, 1000);
+});
+getUserAccount();
+setInterval(funBlock, 5000);
+</script>
+<noscript>Javascript must be enabled</noscript>
+</body>
+</html>
