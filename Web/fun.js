@@ -60,3 +60,8 @@ function CB_getBalance(err, res) {
 		document.getElementById("balance").innerHTML = "Loading...";
 	}
 }
+
+function getTime() {
+	var date = new Date();
+	document.getElementById("time").innerHTML = date;
+}
