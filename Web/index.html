@@ -10,18 +10,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <!-- Provider: Metamask -->
 <script>
-      window.addEventListener('load', function() {
-        if (typeof web3 !== 'undefined') {
-          console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
-          window.web3 = new Web3(web3.currentProvider);
-		  $("#metamask").html("<p>Metamask detected &#x2714;</p>");
-		  $("#metamask").css("background-color","#0c0");
-        } else {
-          console.log('No Web3 Detected... get Metamask');
-		  $("#metamask").html("<p>Metamask not detected!</p>");
-		  $("#metamask").css("background-color","#c00");
-        }
-      }) 
+window.addEventListener('load', function() {
+	if (typeof web3 !== 'undefined') {
+		console.log('Web3 Detected! ' + web3.currentProvider.constructor.name);
+		window.web3 = new Web3(web3.currentProvider);
+		$("#metamask").html("<p>Metamask detected &#x2714;</p>");
+		$("#metamask").css("background-color","#0c0");
+	} else {
+		console.log('No Web3 Detected... get Metamask');
+		$("#metamask").html("<p>Metamask not detected!</p>");
+		$("#metamask").css("background-color","#c00");
+	}
+}) 
 </script>
 <script src="fun.js"></script>
 </head>
@@ -30,7 +30,6 @@
 <h1>&Xi;therFish <sub>Alpha</sub></h1>
 </header>
 <div id="metamask"></div>
-<div id="container">
 <div id="info">
 <p>Network: <span id="network">Rinkeby</span></p>
 <p>Latest Block: <span id="block">loading...</span></p>
@@ -42,24 +41,24 @@
 </div>
 <div id="pecera">
 <!-- <iframe id="youtube" width="426" height="240" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe> -->
-<img src="pecera.gif" alt="Pecera" />
+<img src="pecera.gif" style="width:360px" alt="Pecera" />
 <br>
 <input id="feedButton" type="button" onclick="feed()" value="Feed it!" />
 <br>
 <p id="message"></p>
 <p>Tx Hash: <span id="txHash"></span></p>
 </div>
-</div>
+<footer>
+<p id="time">loading time...</p>
+</footer>
 <script>
 $(document).ready(function () {
 	$("#contractAddress").text(contractAddress);
+	setInterval(getTime, 1000);
 });
 getUserAccount();
 setInterval(funBlock, 5000);
 </script>
-<footer>
-<p>2019 &copy; EtherFish</p>
-</footer>
 <noscript>Javascript must be enabled</noscript>
 </body>
 </html>
