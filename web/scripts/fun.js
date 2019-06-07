@@ -42,7 +42,7 @@ function CB_getBlock(err, res) {
 	if(!err) {
 		document.getElementById("block").innerHTML = res["number"];
 	} else {
-		document.getElementById("block").innerHTML = "Loading...";
+		document.getElementById("block").innerHTML = "loading...";
 	}
 }
 
@@ -51,7 +51,7 @@ function CB_getBalance(err, res) {
 		var CB_balance = web3.fromWei(res, 'ether');
 		document.getElementById("balance").innerHTML = CB_balance + " Ether";
 	} else {
-		document.getElementById("balance").innerHTML = "Loading...";
+		document.getElementById("balance").innerHTML = "loading...";
 	}
 }
 

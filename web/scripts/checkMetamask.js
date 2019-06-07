@@ -6,7 +6,7 @@ window.addEventListener('load', function() {
 		$("#metamask").css("background-color","#0c0");
 	} else {
 		console.log('No Web3 Detected... get Metamask');
-		$("#metamask").html("<p>Metamask not detected!</p>");
+		$("#metamask").html("<p>Metamask not detected! Required</p>");
 		$("#metamask").css("background-color","#c00");
 	}
 });
