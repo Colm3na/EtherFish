@@ -86,3 +86,10 @@ header sub {
 a {
 	color:#00f;
 }
+
+noscript {
+	position:relative;
+	display:inline-block;
+	width:100%;
+	background-color:#f00;
+}

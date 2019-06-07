@@ -3,27 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<link rel="stylesheet" type="text/css" href="style.css">
-<title>EtherFish | Colm3na</title>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<title></title>
 <meta name="description" content="Alimentador de peces remoto y usando Ethereum como plataforma de pagos.">
 <link rel="shortcut icon" href="favicon.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <!-- Provider: Metamask -->
-<script>
-window.addEventListener('load', function() {
-	if (typeof web3 !== 'undefined') {
-		console.log('Web3 Detected! ' + web3.currentProvider.constructor.name);
-		window.web3 = new Web3(web3.currentProvider);
-		$("#metamask").html("<p>Metamask detected &#x2714;</p>");
-		$("#metamask").css("background-color","#0c0");
-	} else {
-		console.log('No Web3 Detected... get Metamask');
-		$("#metamask").html("<p>Metamask not detected!</p>");
-		$("#metamask").css("background-color","#c00");
-	}
-}) 
-</script>
-<script src="fun.js"></script>
+<script src="./js/checkMetamask.js"></script>
+<script src="./js/fun.js"></script>
 </head>
 <body onload="getBalance()">
 <header>
@@ -35,9 +22,9 @@ window.addEventListener('load', function() {
 <p>Latest Block: <span id="block">loading...</span></p>
 <hr>
 <p>Fish Contract: <a href="https://rinkeby.etherscan.io/address/0x0451a1c0e4194967363ad9cf1a202419ba4fe83e"><span id="contractAddress"></span></a></p>
-<p>Balance: <span id="balance"></span></p>
+<p>Balance: <span id="balance">loading...</span></p>
 <hr>
-<p>User Account: <span id="userAccount"></span></p>
+<p>User Account: <span id="userAccount">loading datetime...</span></p>
 </div>
 <div id="pecera">
 <!-- <iframe id="youtube" width="426" height="240" src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"></iframe> -->
@@ -49,16 +36,9 @@ window.addEventListener('load', function() {
 <p>Tx Hash: <span id="txHash"></span></p>
 </div>
 <footer>
-<p id="time">loading time...</p>
+<p id="time">loading...</p>
 </footer>
-<script>
-$(document).ready(function () {
-	$("#contractAddress").text(contractAddress);
-	setInterval(getTime, 1000);
-});
-getUserAccount();
-setInterval(funBlock, 5000);
-</script>
-<noscript>Javascript must be enabled</noscript>
+<script src="./js/main.js"></script>
+<noscript><p>Javascript must be enabled</p></noscript>
 </body>
 </html>
